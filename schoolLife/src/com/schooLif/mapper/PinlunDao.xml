@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.schooLif.mapper.PinlunDao">
+    <!-- 直接查询 -->
+    <select id="listPL"  resultType="Pinlun">
+		select * from pinlun;
+	</select>
+
+   <!-- 添加 -->
+   <!-- namexmlns要和接口定义的权限类名一致,作用是能找到mysql语句 -->
+    <insert id="addPL" parameterType="com.schooLif.mapper.PinlunDao" >
+   insert into pinlun(puserId,plYeMianId,plContent,plunTime)VALUES(#{puserId},#{plYeMianId},#{plContent},#{plunTime})
+   </insert>
+   
+</mapper>

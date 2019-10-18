@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.schooLif.mapper.DayDictDao">
+   <!-- 当天信息查询 -->
+   <select id="selectDangTianDayList"  parameterType="String" resultType="Day">
+      	select * from day where day(dayTime) =day(now());   
+   </select>
+    <!-- 直接查询 -->
+    <select id="selectDayList" parameterType="String" resultType="Day">
+		select * from day;
+	</select>
+	<!-- 查询 -->
+	<select id="selectDayListByDateTime" parameterType="String" resultType="Day">
+		select * from day where dayTime = #{teampTime};
+	</select>
+   <!-- 添加 -->
+   <!-- namexmlns要和接口定义的权限类名一致,作用是能找到mysql语句 -->
+    <insert id="addDay" parameterType="com.schooLif.mapper.DayDictDao" >
+   insert INTO day(dayId,title,content,content_id,img_url,img_urlID,dayTime)VALUES(#{dayId},#{title},#{content},#{content_id},#{img_url},#{img_urlID},#{dayTime})
+   </insert>
+   <!-- 删除 -->
+   <delete id="deleteDay">
+   		delete from day where id = #{id}
+   </delete>
+</mapper>

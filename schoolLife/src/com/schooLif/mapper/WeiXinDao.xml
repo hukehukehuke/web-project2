@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.schooLif.mapper.WeiXinDao">
+	
+   <!-- 添加保存 -->
+   <!-- namexmlns要和接口定义的权限类名一致,作用是能找到mysql语句 -->
+    <insert id="addWeiXin" parameterType="com.schooLif.mapper.WeiXinDao" >
+   insert INTO weixin(ip,openid,creatTime)VALUES(#{ip},#{openid},#{creatTime})
+   </insert>
+  <!-- 查看 -->
+  <select id="chakanWeixin" resultType="String" >
+     select * from weixin where openid=#{openid}
+      
+  </select>
+  
+  <!-- 修改 -->
+  <update id="xiugaiWEixin" parameterType="com.schooLif.mapper.WeiXinDao">
+    update weixin set openid =#{openid},creatTime=#{creatTime} where openid =#{openid},
+    
+  </update>
+  
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.schooLif.mapper.DianzanDao">
+   
+   <!-- 添加 -->
+   <!-- namexmlns要和接口定义的权限类名一致,作用是能找到mysql语句 -->
+    <insert id="addDainzan" parameterType="com.schooLif.mapper.DianzanDao" >
+   insert into dianzan(userId,userYeMianId,userDianzan,starTime)VALUES(#{userId},#{userYeMianId},#{userDianzan},#{starTime})
+   </insert>
+   <!-- 查看 -->
+   <select id="chakanDz" resultType="String" parameterType="com.schooLif.mapper.DayDictDao">
+         select * from dianzan where userId=#{userId} and userYeMianId=#{userYeMianId}
+   </select>
+   <!-- 删除 -->
+   <delete id="deletePriKeyDz"  >
+   		delete from dianzan where id = #{id}
+   </delete>
+</mapper>
